@@ -1,92 +1,196 @@
-# Hi, I'm Philippe 👋
+import React, { useState, useEffect } from 'react';
+import { Terminal, Server, Cpu, Globe, Database, Code, Activity, Layers, ExternalLink, ChevronRight, Layout } from 'lucide-react';
 
-Web developer transitioning to **DevOps**.
-Originally a graphic designer, I build web apps, APIs and tinker with
-self-hosted infrastructure on my homelab.
-Passionate about automation, CI/CD pipelines and cloud-native technologies.
+const App = () => {
+  const [typedText, setTypedText] = useState('');
+  const fullText = "Design > Development > DevOps...";
+  const [pulse, setPulse] = useState(true);
 
----
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setTypedText(fullText.slice(0, i));
+      i++;
+      if (i > fullText.length) clearInterval(interval);
+    }, 50) ;
+    
+    const pulseInterval = setInterval(() => setPulse(p => !p), 2000);
+    return () => {
+      clearInterval(interval);
+      clearInterval(pulseInterval);
+    };
+  }, []);
 
-## 🛠 Tech Stack
+  const Badge = ({ children, color = "blue" }) => (
+    <span className={`px-2 py-1 rounded text-xs font-mono border border-${color}-500/30 bg-${color}-500/10 text-${color}-400 flex items-center gap-1`}>
+      <div className={`w-1.5 h-1.5 rounded-full bg-${color}-500 ${pulse ? 'animate-pulse' : ''}`} />
+      {children}
+    </span>
+  );
 
-### Frontend
-<p>
-  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white"/>
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"/>
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
-</p>
+  return (
+    <div className="min-h-screen bg-[#0d1117] text-slate-300 p-4 md:p-8 font-mono">
+      {/* Header / Terminal */}
+      <div className="max-w-5xl mx-auto mb-8 border border-slate-700 rounded-lg overflow-hidden shadow-2xl">
+        <div className="bg-[#161b22] px-4 py-2 border-b border-slate-700 flex items-center gap-2">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500/50" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+            <div className="w-3 h-3 rounded-full bg-green-500/50" />
+          </div>
+          <div className="text-xs text-slate-500 ml-4 flex items-center gap-2">
+            <Terminal size={14} /> philippe-delaval / README.md
+          </div>
+        </div>
+        <div className="p-6 bg-[#0d1117]">
+          <h1 className="text-3xl font-bold text-white mb-2">
+            Hi, I'm Philippe <span className="animate-wave inline-block">👋</span>
+          </h1>
+          <div className="text-cyan-400 h-6">
+            {typedText}<span className="animate-pulse">_</span>
+          </div>
+          <p className="mt-4 text-slate-400 max-w-2xl leading-relaxed text-sm md:text-base">
+            A former <span className="text-purple-400">Graphic Designer</span> turned <span className="text-blue-400">Web Developer</span>, now transitioning into <span className="text-cyan-400">DevOps</span>. 
+            I build web applications, APIs, and manage my self-hosted infrastructure in my homelab.
+          </p>
+        </div>
+      </div>
 
-### Backend
-<p>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
-  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white"/>
-</p>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* Main Status Column */}
+        <div className="md:col-span-2 space-y-6">
+          
+          {/* Transition Progress (3 steps) */}
+          <div className="bg-[#161b22] border border-slate-700 rounded-lg p-5">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-sm font-bold flex items-center gap-2">
+                <Activity size={16} className="text-green-500" /> DEPLOYMENT_PIPELINE: ACTIVE
+              </h3>
+              <span className="text-[10px] text-slate-500 font-mono italic">PIPELINE_STAGES: 3/3</span>
+            </div>
+            <div className="relative pt-1">
+              <div className="flex mb-3 items-center justify-between text-[10px] uppercase tracking-tighter">
+                <div className="text-purple-400 font-bold">Graphic Design</div>
+                <div className="text-blue-400 font-bold text-center">Web Developer</div>
+                <div className="text-cyan-400 font-bold text-right">DevOps Engineer</div>
+              </div>
+              <div className="overflow-hidden h-3 mb-4 text-xs flex rounded bg-slate-800 border border-slate-700">
+                {/* Step 1: Design - Completed */}
+                <div style={{ width: "33%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500 border-r border-slate-900/50"></div>
+                {/* Step 2: Web Dev - Completed/Foundation */}
+                <div style={{ width: "33%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 border-r border-slate-900/50"></div>
+                {/* Step 3: DevOps - In Progress */}
+                <div style={{ width: "20%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-500 animate-pulse"></div>
+                <div style={{ width: "14%" }} className="bg-slate-700/30"></div>
+              </div>
+              <div className="text-[10px] text-slate-500 flex justify-between">
+                <span>Legacy System</span>
+                <span>Runtime Stable</span>
+                <span className="text-cyan-500 animate-pulse">Deploying...</span>
+              </div>
+            </div>
+          </div>
 
-### Database
-<p>
-  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white"/>
-  <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Neon-00E699?style=for-the-badge&logo=neon&logoColor=black"/>
-</p>
+          {/* Tech Stack Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bg-[#161b22] border border-slate-700 rounded-lg p-4">
+              <h4 className="text-xs font-bold text-slate-500 uppercase mb-3 flex items-center gap-2">
+                <Code size={14} /> Frontend_Core
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <Badge color="green">Vue.js</Badge>
+                <Badge color="blue">React</Badge>
+                <Badge color="blue">Next.js</Badge>
+                <Badge color="blue">TypeScript</Badge>
+                <Badge color="cyan">Tailwind</Badge>
+              </div>
+            </div>
+            
+            <div className="bg-[#161b22] border border-slate-700 rounded-lg p-4">
+              <h4 className="text-xs font-bold text-slate-500 uppercase mb-3 flex items-center gap-2">
+                <Database size={14} /> Backend & Storage
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <Badge color="green">Node.js</Badge>
+                <Badge color="red">Laravel</Badge>
+                <Badge color="blue">PostgreSQL</Badge>
+                <Badge color="cyan">Neon</Badge>
+              </div>
+            </div>
 
-### Hardware & Homelab
-<p>
-  <img src="https://img.shields.io/badge/Raspberry_Pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Arduino-00878A?style=for-the-badge&logo=arduino&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Self--Hosted-111827?style=for-the-badge&logo=homeassistant&logoColor=white"/>
-</p>
+            <div className="bg-[#161b22] border border-slate-700 rounded-lg p-4">
+              <h4 className="text-xs font-bold text-slate-500 uppercase mb-3 flex items-center gap-2">
+                <Layers size={14} /> Infrastructure
+              </h4>
+              <div className="flex flex-wrap gap-2 text-yellow-500">
+                <Badge color="yellow">Docker</Badge>
+                <Badge color="blue">GH Actions</Badge>
+                <Badge color="orange">Cloudflare</Badge>
+                <Badge color="slate">Proxmox</Badge>
+              </div>
+            </div>
 
-### DevOps & Cloud
-<p>
-  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white"/>
-</p>
+            <div className="bg-[#161b22] border border-slate-700 rounded-lg p-4 border-dashed border-cyan-500/30">
+              <h4 className="text-xs font-bold text-cyan-500 uppercase mb-3 flex items-center gap-2">
+                <Cpu size={14} /> Currently_Building
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <Badge color="cyan">Kubernetes</Badge>
+                <Badge color="purple">Terraform</Badge>
+                <Badge color="blue">Go</Badge>
+                <Badge color="yellow">AWS/Azure</Badge>
+              </div>
+            </div>
+          </div>
+        </div>
 
-### Testing & Methodology
-<p>
-  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white"/>
-  <img src="https://img.shields.io/badge/TDD-✅-green?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/CI%2FCD-✅-blue?style=for-the-badge"/>
-</p>
+        {/* Sidebar Status */}
+        <div className="space-y-6">
+          <div className="bg-[#161b22] border border-slate-700 rounded-lg p-5">
+            <h3 className="text-xs font-bold text-slate-500 uppercase mb-4 flex items-center gap-2">
+              <Server size={14} /> Homelab_Metrics
+            </h3>
+            <div className="space-y-4 text-xs font-mono">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Orchestrator</span>
+                <span className="text-white">Docker / Swarm</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Hypervisor</span>
+                <span className="text-orange-400">Proxmox VE</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Nodes</span>
+                <span className="text-white">Rpi4 + MiniPC</span>
+              </div>
+              <div className="mt-4 pt-4 border-t border-slate-800">
+                <div className="flex gap-1 items-center mb-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-[10px] text-green-500">SYSTEMS_HEALTHY</span>
+                </div>
+                <p className="text-[10px] text-slate-500 leading-tight">
+                  Experimenting with Infrastructure as Code and self-hosting for real-world reliability tests.
+                </p>
+              </div>
+            </div>
+          </div>
 
-### Learning
-<p>
-  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white"/>
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
-</p>
+          <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-slate-700 rounded-lg p-5">
+             <h3 className="text-xs font-bold text-white uppercase mb-2">Philosophy</h3>
+             <p className="text-xs leading-relaxed text-slate-400 italic">
+               "Design taught me user experience. Development taught me logic. DevOps is teaching me resilience."
+             </p>
+          </div>
+        </div>
 
----
+      </div>
+      
+      <div className="max-w-5xl mx-auto mt-12 text-center text-[10px] text-slate-600 uppercase tracking-widest">
+        End of Transmission // {new Date().getFullYear()} // Philippe Delaval
+      </div>
+    </div>
+  );
+};
 
-## 🎯 Goal
-Becoming a **DevOps Engineer** — bridging my web development background
-with cloud infrastructure, automation and self-hosted systems.
-Currently building hands-on experience through my **homelab** and
-real-world CI/CD pipelines.
-
----
-
-## 🏠 Homelab
-I run a self-hosted lab at home to experiment with:
-- Container orchestration (Docker, and soon Kubernetes)
-- Self-hosted services and monitoring
-- Network configuration and infrastructure as code
-- Raspberry Pi projects (automation, IoT with Arduino)
-
----
-
-## 📌 Projects
-- [portfolio](https://github.com/philippe-delaval/portfolio) — My developer portfolio
+export default App;
