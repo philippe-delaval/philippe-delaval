@@ -89,5 +89,4 @@ I run a self-hosted lab at home to experiment with:
 ---
 
 ## 📌 Projects
-- [event-app](https://github.com/philippe-delaval/event-app) — TypeScript · Next.js · deployed on Vercel
 - [portfolio](https://github.com/philippe-delaval/portfolio) — My developer portfolio
