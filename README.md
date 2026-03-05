@@ -1,50 +1,92 @@
-import React, { useState, useEffect } from 'react'; import { Terminal, Server, Cpu, Globe, Database, Code, Activity, Layers, ExternalLink, ChevronRight, Layout } from 'lucide-react'; const App = () => { const \[typedText, setTypedText\] = useState(''); const fullText = "Design > Development > DevOps..."; const \[pulse, setPulse\] = useState(true); useEffect(() => { let i = 0; const interval = setInterval(() => { setTypedText(fullText.slice(0, i)); i++; if (i > fullText.length) clearInterval(interval); }, 50) ; const pulseInterval = setInterval(() => setPulse(p => !p), 2000); return () => { clearInterval(interval); clearInterval(pulseInterval); }; }, \[\]); const Badge = ({ children, color = "blue" }) => (
+# Hi, I'm Philippe 👋
 
-{children} ); return (
+Web developer transitioning to **DevOps**.
+Originally a graphic designer, I build web apps, APIs and tinker with
+self-hosted infrastructure on my homelab.
+Passionate about automation, CI/CD pipelines and cloud-native technologies.
 
-{/\* Header / Terminal \*/}
+---
 
-philippe-delaval / README.md
+## 🛠 Tech Stack
 
-Hi, I'm Philippe 👋
-===================
+### Frontend
+<p>
+  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+</p>
 
-{typedText}\_
+### Backend
+<p>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white"/>
+</p>
 
-A former Graphic Designer turned Web Developer, now transitioning into DevOps. I build web applications, APIs, and manage my self-hosted infrastructure in my homelab.
+### Database
+<p>
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Neon-00E699?style=for-the-badge&logo=neon&logoColor=black"/>
+</p>
 
-{/\* Main Status Column \*/}
+### Hardware & Homelab
+<p>
+  <img src="https://img.shields.io/badge/Raspberry_Pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Arduino-00878A?style=for-the-badge&logo=arduino&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Self--Hosted-111827?style=for-the-badge&logo=homeassistant&logoColor=white"/>
+</p>
 
-{/\* Transition Progress (3 steps) \*/}
+### DevOps & Cloud
+<p>
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white"/>
+</p>
 
-### DEPLOYMENT\_PIPELINE: ACTIVE
+### Testing & Methodology
+<p>
+  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TDD-✅-green?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/CI%2FCD-✅-blue?style=for-the-badge"/>
+</p>
 
-PIPELINE\_STAGES: 3/3
+### Learning
+<p>
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
+</p>
 
-Graphic Design
+---
 
-Web Developer
+## 🎯 Goal
+Becoming a **DevOps Engineer** — bridging my web development background
+with cloud infrastructure, automation and self-hosted systems.
+Currently building hands-on experience through my **homelab** and
+real-world CI/CD pipelines.
 
-DevOps Engineer
+---
 
-{/\* Step 1: Design - Completed \*/}
+## 🏠 Homelab
+I run a self-hosted lab at home to experiment with:
+- Container orchestration (Docker, and soon Kubernetes)
+- Self-hosted services and monitoring
+- Network configuration and infrastructure as code
+- Raspberry Pi projects (automation, IoT with Arduino)
 
-{/\* Step 2: Web Dev - Completed/Foundation \*/}
+---
 
-{/\* Step 3: DevOps - In Progress \*/}
-
-Legacy System Runtime Stable Deploying...
-
-{/\* Tech Stack Grid \*/}
-
-#### `Frontend_Core`
-
-`   Vue.js React Next.js TypeScript Tailwind   `
-
-`   #### Backend & Storage  Node.js Laravel PostgreSQL Neon  #### Infrastructure  Docker GH Actions Cloudflare Proxmox  #### Currently_Building  Kubernetes Terraform Go AWS/Azure     `
-
-`{/* Sidebar Status */}  ### Homelab_Metrics  Orchestrator Docker / Swarm  Hypervisor Proxmox VE  Nodes Rpi4 + MiniPC  SYSTEMS_HEALTHY  Experimenting with Infrastructure as Code and self-hosting for real-world reliability tests.  ### Philosophy  "Design taught me user experience. Development taught me logic. DevOps is teaching me resilience."      `
-
-`   End of Transmission // {new Date().getFullYear()} // Philippe Delaval   `
-
-`); }; export default App;`
+## 📌 Projects
+- [portfolio](https://github.com/philippe-delaval/portfolio) — My developer portfolio
