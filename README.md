@@ -1,5 +1,7 @@
 # Hi, I'm Philippe 👋
 
+![Profile preview](./preview.png)
+
 Web developer transitioning to **DevOps**.
 Originally a graphic designer, I build web apps, APIs and tinker with
 self-hosted infrastructure on my homelab.
@@ -52,9 +54,8 @@ Passionate about automation, CI/CD pipelines and cloud-native technologies.
   <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white"/>
 </p>
 
-### Testing & Methodology
+### Methodology
 <p>
-  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white"/>
   <img src="https://img.shields.io/badge/TDD-✅-green?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/CI%2FCD-✅-blue?style=for-the-badge"/>
 </p>
@@ -90,3 +91,24 @@ I run a self-hosted lab at home to experiment with:
 
 ## 📌 Projects
 - [portfolio](https://github.com/philippe-delaval/portfolio) — My developer portfolio
+
+---
+
+## 🔐 Project Maintenance
+
+Useful local commands:
+
+```bash
+npm install
+npm run build
+npm run preview-generate
+```
+
+If your local Chromium setup refuses to launch with the browser sandbox enabled,
+you can temporarily opt out for the screenshot command only:
+
+```bash
+PUPPETEER_DISABLE_SANDBOX=1 npm run preview-generate
+```
+
+The optional GitHub workflow can also regenerate the preview image automatically.
