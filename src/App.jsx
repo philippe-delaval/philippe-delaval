@@ -284,8 +284,12 @@ function ProfileFooter() {
 // ---------------------------------------------------------------------------
 
 function App() {
+  const captureMode =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("capture") === "1";
+
   return (
-    <div className="profile-app capture-mode">
+    <div className={`profile-app${captureMode ? " capture-mode" : ""}`}>
       <div className="profile-shell">
         <TerminalHero />
 
